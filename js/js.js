@@ -8,9 +8,8 @@
       "<meta charset=\"utf-8\">\n\t\t" +
       "<title>Test</title>\n\n\t\t\n\t" +
       "</head>\n\t" +
-      "<body onLoad=\'brython()\''>\n\t\n\t" +
+      "<body>\n\t\n\t" +
       "</body>\n" +
-      "<script src=\"http://brython.info/src/brython.js\"></script>\n\t" +
       "</html>";
 	
 	var prepareSource = function() {
@@ -27,7 +26,7 @@
 		src = src.replace('</head>', css + '</head>');
 		
 		// Javascript
-		js = '<script type="text/python">' + js + '<\/script>';
+		js = '<script>' + js + '<\/script>';
 		src = src.replace('</body>', js + '</body>');
 		
 		return src;
@@ -52,37 +51,29 @@
 		mode: 'text/html',
 		gutter: true,
 		lineNumbers: false,
+		
+		onChange: function (inst, changes) {
+			render();
+		}
 	};
 	
 	// HTML EDITOR
 	var html_box = document.querySelector('#html textarea');
 	var html_editor = CodeMirror.fromTextArea(html_box, cm_opt);
-  
-  html_editor.on('change', function (inst, changes) {
-    render();
-  });
 	
 	// CSS EDITOR
 	cm_opt.mode = 'css';
 	var css_box = document.querySelector('#css textarea');
 	var css_editor = CodeMirror.fromTextArea(css_box, cm_opt);
-  
-  css_editor.on('change', function (inst, changes) {
-    render();
-  });
 	
 	// JAVASCRIPT EDITOR
 	cm_opt.mode = 'javascript';
 	var js_box = document.querySelector('#js textarea');
 	var js_editor = CodeMirror.fromTextArea(js_box, cm_opt);
-  
-  js_editor.on('change', function (inst, changes) {
-    render();
-  });
 	
 	// SETTING CODE EDITORS INITIAL CONTENT
 	html_editor.setValue('<p>Hello World</p>');
-	css_editor.setValue('body { color: blue; }');
+	css_editor.setValue('body { color: red; }');
 	
 	
 	// RENDER CALL ON PAGE LOAD
@@ -109,11 +100,10 @@
 		cms[i].style.bottom = '0';
 		cms[i].style.left = '0';
 		cms[i].style.right = '0';
-    cms[i].style.height = '100%';
 	}
-	/*cms = document.querySelectorAll('.CodeMirror-scroll');
+	cms = document.querySelectorAll('.CodeMirror-scroll');
 	for (i = 0; i < cms.length; i++) {
 		cms[i].style.height = '100%';
-	}*/
+	}
 			
 }());
