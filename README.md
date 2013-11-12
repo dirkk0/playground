@@ -7,4 +7,4 @@ This project is based on the wonderful work and [write-up](http://codetheory.in/
 
 To use it, clone or download and unzip the project and start a local webserver (like `python -m SimpleHTTPServer`).
 
-[screenshot](http://content.screencast.com/users/dirkk1/folders/Jing/media/35515ad5-ca5d-4de5-b976-24c8ce572037/00000249.png)
+![screenshot](http://content.screencast.com/users/dirkk1/folders/Jing/media/35515ad5-ca5d-4de5-b976-24c8ce572037/00000249.png)
