@@ -52,7 +52,8 @@
 		gutter: true,
 		lineNumbers: false,
 		
-		onChange: function (inst, changes) {
+		onChange: function () {
+			console.log('1')
 			render();
 		}
 	};
@@ -60,16 +61,29 @@
 	// HTML EDITOR
 	var html_box = document.querySelector('#html textarea');
 	var html_editor = CodeMirror.fromTextArea(html_box, cm_opt);
+	html_editor.on("change", function(html_editor, change) {
+	  // console.log("something changed! (" + change.origin + ")");
+	  render();
+	});
+
 	
 	// CSS EDITOR
 	cm_opt.mode = 'css';
 	var css_box = document.querySelector('#css textarea');
 	var css_editor = CodeMirror.fromTextArea(css_box, cm_opt);
+	css_editor.on("change", function(css_editor, change) {
+	  // console.log("something changed! (" + change.origin + ")");
+	  render();
+	});
 	
 	// JAVASCRIPT EDITOR
 	cm_opt.mode = 'javascript';
 	var js_box = document.querySelector('#js textarea');
 	var js_editor = CodeMirror.fromTextArea(js_box, cm_opt);
+	js_editor.on("change", function(js_editor, change) {
+	  // console.log("something changed! (" + change.origin + ")");
+	  render();
+	});
 	
 	// SETTING CODE EDITORS INITIAL CONTENT
 	html_editor.setValue('<p>Hello World</p>');
